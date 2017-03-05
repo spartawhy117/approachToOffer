@@ -1,4 +1,5 @@
 #include <iostream>
+#include <deque>
 using namespace std;
 struct BinaryTreeNode
 {
@@ -9,52 +10,35 @@ struct BinaryTreeNode
 	BinaryTreeNode* m_pLeft;
 	BinaryTreeNode* m_pRight;
 };
-void MirrorRecursively(BinaryTreeNode* pRoot)
+void PrintFromTopToBottom(BinaryTreeNode* pRoot)
 {
-	if (pRoot == nullptr)
+	if(pRoot==nullptr)
 		return;
-	else if (pRoot->m_pLeft == nullptr&&pRoot->m_pRight == nullptr)
-		return ;
 
-	BinaryTreeNode* pTemp = pRoot->m_pLeft;
-	pRoot->m_pLeft = pRoot->m_pRight;
-	pRoot->m_pRight = pTemp;
+	//只有存指针才能有向下的链接
+	//使用队列更加方便
+	deque<BinaryTreeNode*> printQueue;
 
-	if(pRoot->m_pLeft!=nullptr)
-	{
-		MirrorRecursively(pRoot->m_pLeft);
-	}
-	if(pRoot->m_pRight!=nullptr)
-	{
-		MirrorRecursively(pRoot->m_pRight);
-	}
-}
+	printQueue.push_back(pRoot);
 
-void PrintTree(BinaryTreeNode* p)
-{
-	if (p)
+	while(printQueue.size()>0)
 	{
-		cout << p->m_nValue<<" ";
-	}
-	if (p->m_pLeft)
-	{
-		cout << "left is:";
-		PrintTree(p->m_pLeft);
-	}
+		BinaryTreeNode* pNode = printQueue.front();
+		printQueue.pop_front();
 
-	if (p->m_pRight)
-	{
-		cout << "right is:";
-		PrintTree(p->m_pRight);
-	}
-	if (p->m_pLeft == nullptr&&p->m_pRight == nullptr)
-	{
-		cout << " end node" << endl;
+		cout << pNode->m_nValue<<" ";
+
+		if (pNode->m_pLeft != nullptr)
+		{
+			printQueue.push_back(pNode->m_pLeft);
+
+		}
+		if(pNode->m_pRight!=nullptr)
+		{
+			printQueue.push_back(pNode->m_pRight);
+		}
 
 	}
-
-
-	return;
 }
 
 int main(int argc, char* argv[])
@@ -75,9 +59,8 @@ int main(int argc, char* argv[])
 	node5->m_pLeft = node6;
 	node5->m_pRight = node7;
 
-	MirrorRecursively(node1);
-
-	PrintTree(node1);
+	PrintFromTopToBottom(node1);
 
 	system("pause");
 }
+
