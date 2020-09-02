@@ -46,8 +46,8 @@ int main()
 {
 	char str[14] = {"we are happy!"};//14
 
-	//sizeof¼ÆËã°üÀ¨'\0'
-	//strlen²»°üÀ¨'\0'
+	//sizeofè®¡ç®—åŒ…æ‹¬'\0'
+	//strlenä¸åŒ…æ‹¬'\0'
 	size_t l = sizeof(str);
 	char* newChar=ReplaceBlank(str, l);
 	

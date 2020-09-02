@@ -14,7 +14,7 @@ public:
 
 		CMyString tmp(str);
 		char *value = tmp.m_pData;
-		//¿ÉÒÔÎö¹¹Ô­ÓÐµÄ×ÊÔ´
+		//å¯ä»¥æžæž„åŽŸæœ‰çš„èµ„æº
 		tmp.m_pData = this->m_pData;
 
 		this->m_pData = value;

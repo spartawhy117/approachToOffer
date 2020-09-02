@@ -29,7 +29,7 @@ public:
 
 		}
 		
-		//注意为空也很重要
+		//娉ㄦ剰涓虹┖涔熷緢閲嶈
 		if(stack2.size()==0)
 		{
 			throw new exception("queue is empty");

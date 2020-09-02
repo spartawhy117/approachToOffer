@@ -1,12 +1,12 @@
 #pragma once
 #include <mutex>
-class Singleton1 final// final ¹Ø¼ü×ÖÊ¹µÃ¸ÃÀà²»ÄÜ±»¼Ì³Ğ
+class Singleton1 final// final å…³é”®å­—ä½¿å¾—è¯¥ç±»ä¸èƒ½è¢«ç»§æ‰¿
 {
 public:
 	static Singleton1& getInstance()
 	{
-		//c++ 11 Ïß³Ì°²È«
-		//c++11 Ö®Ç°ĞèÒª¼ÓËø
+		//c++ 11 çº¿ç¨‹å®‰å…¨
+		//c++11 ä¹‹å‰éœ€è¦åŠ é”
 		mt.lock();
 		static Singleton1 instance;
 		mt.unlock();

@@ -15,7 +15,7 @@ BinaryTreeNode* ConstructBinaryTreeCore(int* s_preorder,int* e_preorder ,int* s_
 	int rootValue = s_preorder[0];
 	BinaryTreeNode *pRoot = new BinaryTreeNode(rootValue);
 
-	//ÖÕÖ¹Ìõ¼şÊÇ¹Ø¼ü
+	//ç»ˆæ­¢æ¡ä»¶æ˜¯å…³é”®
 	if (s_preorder == e_preorder)
 	{
 		if(s_inorder==e_inorder&&s_preorder==s_inorder)
@@ -27,7 +27,7 @@ BinaryTreeNode* ConstructBinaryTreeCore(int* s_preorder,int* e_preorder ,int* s_
 
 	int leftLength = 0;
 	int* rootInorder = s_inorder;
-	//ĞèÒªÁ½¸öÌõ¼şÀ´ÅĞ¶Ï£¬²»ÄÜÔ½½ç
+	//éœ€è¦ä¸¤ä¸ªæ¡ä»¶æ¥åˆ¤æ–­ï¼Œä¸èƒ½è¶Šç•Œ
 	while (*rootInorder!=rootValue&&rootInorder<=e_inorder)
 	{
 		rootInorder++;
@@ -36,17 +36,15 @@ BinaryTreeNode* ConstructBinaryTreeCore(int* s_preorder,int* e_preorder ,int* s_
 
 	leftLength = rootInorder - s_inorder;
 	
-	if(leftLength>0)//Õâ¸öÅĞ¶Ï¿ØÖÆÒ²ºÜÖØÒª
+	if(leftLength>0)//è¿™ä¸ªåˆ¤æ–­æ§åˆ¶ä¹Ÿå¾ˆé‡è¦
 	{
 		pRoot->m_pLeft = ConstructBinaryTreeCore(s_preorder + 1, s_preorder + leftLength, s_inorder, s_inorder + leftLength - 1);
 	}
-	if(leftLength<e_preorder-s_preorder)//Èç¹û¸ù½ÚµãÓÒ²àÈ«ÊÇ×ó×ÓÊ÷£¬ÄÇÃ´Ã»ÓĞÓÒ×ÓÊ÷ ºÜÖØÒª
+	if(leftLength<e_preorder-s_preorder)//å¦‚æœæ ¹èŠ‚ç‚¹å³ä¾§å…¨æ˜¯å·¦å­æ ‘ï¼Œé‚£ä¹ˆæ²¡æœ‰å³å­æ ‘ å¾ˆé‡è¦
 	{
 		pRoot->m_pRight = ConstructBinaryTreeCore(s_preorder + leftLength + 1, e_preorder, s_inorder + leftLength + 1, e_inorder);
 	}
 	
-	
-
 	return pRoot;
 }
 
