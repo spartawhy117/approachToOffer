@@ -8,7 +8,7 @@ void PermutationRecursion(char *pStr,char* pBegin)
 	}
 	else
 	{
-		//µ±Ç°µÚÒ»Î»ºÍÊ£ÏÂµÄÃ¿Ò»Î»½øĞĞ½»»»
+		//å½“å‰ç¬¬ä¸€ä½å’Œå‰©ä¸‹çš„æ¯ä¸€ä½è¿›è¡Œäº¤æ¢
 		for(char* pCh=pBegin;*pCh!='\0';++pCh)
 		{
 			char temp = *pCh;
@@ -16,11 +16,11 @@ void PermutationRecursion(char *pStr,char* pBegin)
 			*pBegin = temp;
 
 
-			//µİ¹éÏÂÒ»Î»
+			//é€’å½’ä¸‹ä¸€ä½
 			PermutationRecursion(pStr, pBegin + 1);
 
 
-			//¿ØÖÆË³Ğò½»»»»ØÀ´
+			//æ§åˆ¶é¡ºåºäº¤æ¢å›æ¥
 			temp = *pBegin;
 			*pBegin = *pCh;
 			*pCh = temp;
